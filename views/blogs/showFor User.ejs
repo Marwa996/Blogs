@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-primary bg-primary ">
+        <div class="container">
+            <p class="text-center text-white fw-bold fs-2">BLOGS WEBSITE</p>
+        </div>
+    </nav>
+    <div class="container mt-2">
+        <div>
+            <h1 class="mt-2"><%= blog.title %></h1>
+            <p class="text-muted"> <%= blog.createdAt.toLocaleDateString () %></p>
+        </div>
+        <br>
+        <div >
+            <img src="<%= blog.photo %>" alt="photo" style="height:20rem; width:40rem">
+        </div>
+        <br>
+        <div >
+            <%= blog.description %>
+        </div>
+<br>
+        <div >
+            <p class="fw-bold">Author Name:</p>
+            <%= blog.author %>
+        </div><br>
+        <a href="/" class="btn btn-secondary me-3 mb-5">All Blogs</a>
+        <a href="/blogs/edit/<%=blog.id %>" class="btn btn-info mb-5">Edit</a>
+    </div>
+</body>
+</html>
