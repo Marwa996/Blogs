@@ -13,28 +13,42 @@
 <body>
     <nav class="navbar navbar-primary bg-primary ">
     <div class="container">
+        
         <p class="text-center text-white fw-bold fs-2">BLOGS WEBSITE</p>
     </div>
 </nav>
     <div class="container">
-        <h1 class="my-4">Blog Articles</h1>
+        <div class="row justify-content-between">
+        <h1 class="my-4 col-8">Blog Articles</h1>
+        <!-- login and register -->
+        <a href="/user/" class="btn btn-success col-1 h-25 my-4 ms-5">Register</a>
+        <a href="/user/login" class="btn btn-warning col-1 h-25 my-4 ">Login</a>
+    </div>
         <!-- search input -->
         <form action="/blogs/search" method="post">
-            <div class="mb-3">
+            <div class="row">
+            <div class="mb-3 col-3">
                 <label for="search" class="form-label">Search by Author Name</label>
                 <input type="text" class="form-control" id="searcch" name="searchAuthor">
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 col-3">
                 <label for="search" class="form-label">Search By Title</label>
                 <input type="text" class="form-control" id="searcch" name="searchTitle">
             </div>
+
+            <div class="mb-3 col-3">
+                <label for="search" class="form-label">Search By Tag</label>
+                <input type="text" class="form-control" id="searcch" name="searchTag">
+            </div>
+
+        </div>
               <button type="submit" class="btn btn-primary">Search</button>
         </form>
         
           <br> <br>
-        <a href="/blogs/new" class="btn btn-success">NEW BLOG</a>
-        <div class="row justifiy-content-between">
+        <!-- <a href="/blogs/new" class="btn btn-success">NEW BLOG</a> -->
+        <div class="row justify-content-between">
             <!-- here we getting our vars from the app.js and looping on them-->
         <% blogs.forEach(blog => { %>
             <div class="card mt-4 col-3 mx-1">
@@ -47,15 +61,18 @@
                         <div class="overflow-hidden" style="height:4.5rem">
                             <%= blog.description %>
                         </div>......
-                        <br>
-                        <br>
+                        <br><br>
+                        <% blog.tags.forEach(tag => { %>
+                            <span class="text-muted"><%= tag %></span>
+                            <% }) %>
+                        <br><br>
                         <p class="fw-bolder">Author Name:<br><span class="fw-normal"><%= blog.author %></span></p>
                     </div>    
                     <!-- to go to the route using slug -title in the url instead of id- -->
                         <a href="blogs/<%= blog.slug %>" class="btn btn-primary">Read More</a>
-                    <!-- deleting with the method override using the id -->
+                    <!-- deleting with the method override using the id
                         <form class="d-inline" action="/blogs/<%= blog.id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button> -->
                         </form>
                 </div> 
             </div>

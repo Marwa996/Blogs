@@ -11,44 +11,49 @@
 
 </head>
 <body>
+    
     <nav class="navbar navbar-primary bg-primary ">
     <div class="container">
         <p class="text-center text-white fw-bold fs-2">BLOGS WEBSITE</p>
     </div>
 </nav>
-    <div class="container">
-        <h1 class="my-4">Blog Articles</h1>
-        <a href="/blogs/new" class="btn btn-success">NEW BLOG</a>
-        <div class="row justifiy-content-between">
-            <!-- here we getting our vars from the app.js and looping on them-->
-        <% blogs.forEach(blog => { %>
-            <div class="card mt-4 col-3 mx-1">
-                <div class="card-body">
-                    <img src="<%= blog.photo %>" class="img-fluid" alt="photo">
-                    <br><br>
-                    <h4 class="card-title text-center"><%= blog.title %></h4>
-                    <br>
-                    <div class="card-subtitle mb-2">
-                        <div class="overflow-hidden" style="height:4.5rem">
-                            <%= blog.description %>
-                        </div>......
-                        <br>
-                        <br>
-                        <p class="fw-bolder">Author Name:<br><span class="fw-normal"><%= blog.author %></span></p>
-                    </div>    
-                    <!-- to go to the route using slug -title in the url instead of id- -->
-                        <a href="blogs/<%= blog.slug %>" class="btn btn-primary">Read More</a>
-                    <!-- deleting with the method override using the id -->
-                        <form class="d-inline" action="/blogs/<%= blog.id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                </div> 
-            </div>
-        <% }) %>
-    </div>
-        </div>
-        
-        
 
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+        <a href="/blogs/new" class="btn btn-success col-2 me-3" >NEW BLOG</a>
+        <a href="/" class="btn btn-primary col-2">Home</a>
+       </div> 
+       <div class="container">
+        <div class="row justify-content-between">
+        <!-- here we getting our vars from the app.js and looping on them-->
+            <% data.forEach(blog => { %>
+                 <div class="card mt-4 col-3 mx-1">
+                 <div class="card-body">
+                <img src="<%= blog.photo %>" class="img-fluid" alt="photo">
+                <br><br>
+                <h4 class="card-title text-center"><%= blog.title %></h4>
+                <br>
+                <div class="card-subtitle mb-2">
+                    <div class="overflow-hidden" style="height:4.5rem">
+                        <%= blog.description %>
+                    </div>......
+                    <br><br>
+                    <% blog.tags.forEach(tag => { %>
+                        <span class="text-muted"><%= tag %></span>
+                        <% }) %>
+                    <br><br>
+                    <p class="fw-bolder">Author Name:<br><span class="fw-normal"><%= blog.author %></span></p>
+                </div>    
+                <!-- to go to the route using slug -title in the url instead of id- -->
+                    <a href="/blogs/<%= blog.slug %>" class="btn btn-primary">Read More</a>
+                <!-- deleting with the method override using the id -->
+                    <form class="d-inline" action="/blogs/<%= blog.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger mx-2">Delete</button>
+                    </form>
+                    <a href="/blogs/edit/<%=blog.id %>" class="btn btn-info text-white">Edit</a>
+            </div> 
+        </div>
+    <% }) %>
+</div>
 </body>
 </html>

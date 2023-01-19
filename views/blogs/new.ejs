@@ -21,7 +21,40 @@
 
         <form action="/blogs" method="POSt">
             <!-- rendering the form fields that are common to other views-->
-            <%- include('_form_fields') %>
+            
+<div class="form-group">
+    <label for="title">Title</label>
+    <input required  type="text" name="title" id="title" class="form-control">
+</div>
+
+<div class="form-group mt-3">
+    <label for="description">Description</label>
+    <textarea required name="description" id="description" class="form-control"></textarea>
+</div>
+
+<div class="form-group mt-3">
+    <label for="photo">Image URL</label>
+    <input required  name="photo" id="photo"  class="form-control" />
+</div>
+
+<div class="form-group mt-3">
+    <label for="author">Author Name</label>
+    <input required  name="author" id="author"  class="form-control" />
+</div>
+
+<div class="form-group mt-3">
+    <label for="tags">Tags</label>
+    <input required  name="tags" id="tags"  class="form-control" />
+</div>
+
+<div class="mt-3">
+    <!-- cancel button brings us back to the home page -->
+<a href="/" class="btn btn-secondary">Cancel</a>
+<!-- submit button will cal blogs.js from the form action -->
+<button type="submit" class="btn btn-success mx-3">Save</button>
+<a href="/blogs/indexForUser/<%= text %>" class="btn btn-primary">My Blogs</a>
+</div>
+            <input type="text" value="<%= text %>" class="form-control d-none" name="id">
         </form>
     </div>
 </body>

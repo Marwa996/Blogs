@@ -17,6 +17,7 @@
         </div>
     </nav>
     <div class="container mt-2">
+        <div class=" row justify-content-center">
         <div>
             <h1 class="mt-2"><%= blog.title %></h1>
             <p class="text-muted"> <%= blog.createdAt.toLocaleDateString () %></p>
@@ -34,8 +35,8 @@
             <p class="fw-bold">Author Name:</p>
             <%= blog.author %>
         </div><br>
-        <a href="/" class="btn btn-secondary me-3 mb-5">All Blogs</a>
-        <a href="/blogs/edit/<%=blog.id %>" class="btn btn-info mb-5">Edit</a>
-    </div>
+        <a href="/" class="btn btn-success me-3 my-5 w-25">All Blogs</a>
+        <!-- <a href="/blogs/edit/<%=blog.id %>" class="btn btn-info mb-5">Edit</a> -->
+    </div></div>
 </body>
 </html>

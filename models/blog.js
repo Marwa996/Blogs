@@ -27,9 +27,12 @@ const blogSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    // tags:{
-    //     type:Array
-    // }
+    userId:{
+        type:String
+    },
+    tags:{
+        type:Array
+    }
 })
 
 //to make the slug automatically calculated every time we're going to save our blog

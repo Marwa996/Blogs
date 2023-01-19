@@ -15,8 +15,9 @@
         </div>
     </nav>
         <div class="container">
+            <div class="row justify-content-around">
             <% author.forEach(blog => { %>
-                <div class="card mt-4 col- mx-1">
+                <div class="card mt-4 col-3 mx-1">
                     <div class="card-body">
                         <img src="<%= blog.photo %>" class="img-fluid" alt="photo">
                         <br><br>
@@ -34,5 +35,6 @@
                 </div>
             <% }) %>
         </div>
+    </div>
 </body>
 </html>

@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
 const blogRouter= require("./routes/blogs");
+const userRoute= require("./routes/UserRoute");
 const mongoose = require("mongoose");
 const Blog =require("./models/blog");
+// const User =require("./models/user");
+
 //method override so that we can use route.delete method
 const methodOverride = require('method-override')
 var bodyParser = require('body-parser')
@@ -38,6 +41,8 @@ app.get("/", async(req,res)=>{
 });
 
 app.use("/blogs",blogRouter)
+app.use('/user',userRoute);
+
 
 app.listen(9000, () => {
     console.log("Server is running at port 9000");
